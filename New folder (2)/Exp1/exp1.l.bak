@@ -1,0 +1,14 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+%}
+
+%%
+
+%%
+int main()
+{	
+	printf("Azizul Islam");
+	yylex();
+	return 0;
+}

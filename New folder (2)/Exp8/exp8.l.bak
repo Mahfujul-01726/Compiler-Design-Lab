@@ -1,0 +1,15 @@
+%option noyywrap
+%{
+	#include <stdio.h>
+%}
+
+%%
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$  { printf("Email Valid\n"); }
+.*                                                { printf("Email is not Valid\n"); }
+%%
+
+int main()
+{
+	yylex();
+	return 0;
+}

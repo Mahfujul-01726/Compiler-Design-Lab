@@ -1,0 +1,20 @@
+%option noyywrap
+%{
+    #include <stdio.h>
+    int p=0, n=0, pf=0, nf=0;
+%}
+
+%%
+
+-[0-9]+           { n++; }        // Negative integers first
+-[0-9]+\.[0-9]+   { nf++; }       // Negative floats
+[0-9]+\.[0-9]+    { pf++; }       // Positive floats
+[0-9]+            { p++; }        // Positive integers
+
+%%
+int main()
+{
+    yylex();
+    printf("%d %d %d %d\n", p, n, pf, nf);
+    return 0;
+}
