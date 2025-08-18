@@ -1,0 +1,21 @@
+%{
+#include <stdio.h>
+int pos_count = 0, neg_count = 0;
+%}
+
+%%
+"-"[0-9]+    { neg_count++; }   
+[0-9]+       { pos_count++; }  
+[ \t\n]+     ;                  
+.            ;                 
+%%
+
+int main() {
+    yylex();
+    printf("Positive: %d\nNegative: %d\n", pos_count, neg_count);
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
